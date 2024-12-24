@@ -1,0 +1,2 @@
+﻿56012
+C:/Users/alexg/Desktop/Godot/GodotSharp/Godot_v4.4-dev7_mono_win64.exe

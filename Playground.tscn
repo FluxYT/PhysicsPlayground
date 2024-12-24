@@ -1,0 +1,164 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7ps5mpicucxl"]
+
+[ext_resource type="PackedScene" uid="uid://bca3aq7b6qo8c" path="res://Models/Crate.blend" id="1_1cwr0"]
+[ext_resource type="Script" uid="uid://betqmb52iukmn" path="res://PlayerController.cs" id="1_80c3a"]
+[ext_resource type="Texture2D" uid="uid://djgcpe56cibi2" path="res://Models/texture_02.png" id="2_46faf"]
+[ext_resource type="Texture2D" uid="uid://c2g2opf0yvq3b" path="res://Crosshair.png" id="2_d17em"]
+[ext_resource type="PackedScene" uid="uid://beatmy3blu50y" path="res://addons/AllSkyFree/AllSkyFree_ClearBlueSky.tscn" id="3_threo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d17em"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3invt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_threo"]
+albedo_color = Color(0.881937, 0.881937, 0.881937, 1)
+albedo_texture = ExtResource("2_46faf")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80c3a"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d17em"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1cwr0"]
+
+[node name="Playground" type="Node3D"]
+
+[node name="Crate_1kg" type="RigidBody3D" parent="." groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.64482, 1.02916, -6.97556)
+physics_material_override = SubResource("PhysicsMaterial_d17em")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crate_1kg" groups=["Interactable"]]
+shape = SubResource("BoxShape3D_3invt")
+
+[node name="Crate" parent="Crate_1kg" groups=["Interactable"] instance=ExtResource("1_1cwr0")]
+
+[node name="Label3D" type="Label3D" parent="Crate_1kg"]
+transform = Transform3D(1, 1.86265e-09, 0, 0, 1, -2.98023e-08, 0, 1.04308e-07, 1, 0.00115585, -0.016139, 0.502894)
+text = "1kg"
+
+[node name="Crate_10kg" type="RigidBody3D" parent="." groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97703, 1.02916, -6.97556)
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_d17em")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crate_10kg" groups=["Interactable"]]
+shape = SubResource("BoxShape3D_3invt")
+
+[node name="Crate" parent="Crate_10kg" groups=["Interactable"] instance=ExtResource("1_1cwr0")]
+
+[node name="Label3D" type="Label3D" parent="Crate_10kg"]
+transform = Transform3D(1, 1.86265e-09, 0, 0, 1, -2.98023e-08, 0, 1.04308e-07, 1, 0.0213447, -0.016139, 0.502894)
+text = "10kg"
+
+[node name="Crate_40kg" type="RigidBody3D" parent="." groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23794, 1.02916, -6.97556)
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_d17em")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crate_40kg" groups=["Interactable"]]
+shape = SubResource("BoxShape3D_3invt")
+
+[node name="Crate" parent="Crate_40kg" groups=["Interactable"] instance=ExtResource("1_1cwr0")]
+
+[node name="Label3D" type="Label3D" parent="Crate_40kg"]
+transform = Transform3D(1, 1.86265e-09, 0, 0, 1, -2.98023e-08, 0, 1.04308e-07, 1, 0.0213447, -0.016139, 0.502894)
+text = "40kg"
+
+[node name="Crate_60kg" type="RigidBody3D" parent="." groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3802, 1.02916, -6.97556)
+mass = 60.0
+physics_material_override = SubResource("PhysicsMaterial_d17em")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crate_60kg" groups=["Interactable"]]
+shape = SubResource("BoxShape3D_3invt")
+
+[node name="Crate" parent="Crate_60kg" groups=["Interactable"] instance=ExtResource("1_1cwr0")]
+
+[node name="Label3D" type="Label3D" parent="Crate_60kg"]
+transform = Transform3D(1, 1.86265e-09, 0, 0, 1, -2.98023e-08, 0, 1.04308e-07, 1, 0.0213447, -0.016139, 0.502894)
+text = "60kg"
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.930136, 0.208104, -0.302556, 0, 0.823919, 0.566708, 0.367216, -0.527116, 0.766356, 0, 0, 0)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_threo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_80c3a")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Camera", "Crosshair", "InteractionPos", "InteractionRay", "InteractionJoint", "JointA")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78021, 1.66843, 0)
+script = ExtResource("1_80c3a")
+Camera = NodePath("Camera")
+Crosshair = NodePath("../CanvasLayer/Crosshair")
+InteractionPos = NodePath("Camera/InteractionPos")
+InteractionRay = NodePath("Camera/InteractionRay")
+InteractionJoint = NodePath("InteractionJoint")
+JointA = NodePath("JointA")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_d17em")
+
+[node name="Camera" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.756669, -0.0892156)
+
+[node name="InteractionRay" type="RayCast3D" parent="CharacterBody3D/Camera"]
+target_position = Vector3(0, 0, -4)
+
+[node name="InteractionPos" type="Node3D" parent="CharacterBody3D/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="InteractionJoint" type="Generic6DOFJoint3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.756669, -0.0892156)
+node_a = NodePath("../JointA")
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 0.95
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 1.0
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 1.215
+
+[node name="JointA" type="StaticBody3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78021, 2.4251, -5.66711)
+top_level = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/JointA"]
+shape = SubResource("BoxShape3D_1cwr0")
+disabled = true
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CharacterBody3D/JointA"]
+remote_path = NodePath("../..")
+update_rotation = false
+update_scale = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("2_d17em")
+
+[node name="AllSkyFree_ClearBlueSky" parent="." instance=ExtResource("3_threo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0552, 0.5, -12.5649)

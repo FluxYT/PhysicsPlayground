@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://beatmy3blu50y"]
+
+[ext_resource type="Texture2D" uid="uid://dwuagvye1jgj8" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2eq0d"]
+panorama = ExtResource("1")
+
+[sub_resource type="Sky" id="1"]
+sky_material = SubResource("PanoramaSkyMaterial_2eq0d")
+
+[sub_resource type="Environment" id="2"]
+background_mode = 2
+sky = SubResource("1")
+ambient_light_energy = 0.99
+ssao_radius = 8.1
+ssao_intensity = 4.3
+glow_enabled = true
+glow_intensity = 0.6
+glow_strength = 0.36
+glow_bloom = 0.02
+glow_hdr_threshold = 0.44
+fog_depth_curve = 2.0
+fog_depth_begin = 0.0
+fog_depth_end = 2592.6
+
+[node name="AllSkyFree_ClearBlueSky" type="Node3D"]
+
+[node name="WorldEnvironment_ClearBlueSky" type="WorldEnvironment" parent="."]
+environment = SubResource("2")
+
+[node name="DirectionalLight_ClearBlueSky" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.603013, 0.797731, 0, -0.797731, 0.603013, 0, 26.5368, 0)
+light_color = Color(1, 0.980392, 0.968627, 1)
+light_energy = 1.04
+shadow_enabled = true
